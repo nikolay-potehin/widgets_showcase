@@ -1,0 +1,35 @@
+import 'package:flutter/material.dart';
+import 'package:widgets_showcase/main.dart';
+
+class NavigationTile extends StatelessWidget {
+  const NavigationTile({
+    super.key,
+    required this.navigationItem,
+  });
+
+  final NavigationItem navigationItem;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10),
+      child: ListTile(
+        title: Text(
+          navigationItem.title,
+          style: Theme.of(context).textTheme.titleMedium,
+        ),
+        leading: Icon(
+          navigationItem.leading,
+          color: Theme.of(context).primaryColor,
+        ),
+        trailing: Icon(
+          navigationItem.trailing,
+          color: Colors.black38,
+        ),
+        shape: RoundedRectangleBorder(
+            side: const BorderSide(), borderRadius: BorderRadius.circular(10)),
+        onTap: () => navigationItem.openPage(context),
+      ),
+    );
+  }
+}

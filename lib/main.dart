@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:widgets_showcase/pages/bottom_navbar_page.dart';
-import 'package:widgets_showcase/pages/google_bottom_bar.dart';
-import 'package:widgets_showcase/pages/simple_navbar.dart';
+import 'package:widgets_showcase/components/group_title.dart';
+import 'package:widgets_showcase/components/navigation_tile.dart';
+import 'package:widgets_showcase/pages/appbars/drawer_appbar.dart';
+import 'package:widgets_showcase/pages/bottom_navbars/bottom_navbar.dart';
+import 'package:widgets_showcase/pages/bottom_navbars/google_bottom_bar.dart';
+import 'package:widgets_showcase/pages/bottom_navbars/simple_navbar.dart';
 import 'package:widgets_showcase/utils.dart';
 
 void main() {
@@ -34,35 +37,21 @@ class HomePage extends StatelessWidget {
         title: const Text('Widgets Showcase'),
         centerTitle: true,
       ),
-      body: Center(
-        child: ListView.builder(
-            padding: const EdgeInsets.all(20),
-            itemCount: navigationList.length,
-            itemBuilder: (context, index) {
-              final item = navigationList[index];
-
-              return Padding(
-                padding: const EdgeInsets.only(bottom: 10),
-                child: ListTile(
-                  title: Text(
-                    item.title,
-                    style: Theme.of(context).textTheme.titleMedium,
-                  ),
-                  leading: Icon(
-                    item.leading,
-                    color: Theme.of(context).primaryColor,
-                  ),
-                  trailing: Icon(
-                    item.trailing,
-                    color: Colors.black38,
-                  ),
-                  shape: RoundedRectangleBorder(
-                      side: const BorderSide(),
-                      borderRadius: BorderRadius.circular(10)),
-                  onTap: () => item.openPage(context),
-                ),
-              );
-            }),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const GroupTitle(title: 'Bottom Navigation Bars'),
+            ..._bottomBarsList.map(
+              (e) => NavigationTile(navigationItem: e),
+            ),
+            const GroupTitle(title: 'AppBars'),
+            ..._appbarsList.map(
+              (e) => NavigationTile(navigationItem: e),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -87,7 +76,7 @@ class NavigationItem {
   }
 }
 
-final navigationList = [
+final _bottomBarsList = [
   const NavigationItem(
     widget: GoogleBottomBar(),
     title: 'Google Bottom Bar',
@@ -102,5 +91,13 @@ final navigationList = [
     widget: SimpleNavbar(),
     title: 'Simple Navigation Bar',
     leading: Icons.menu,
+  ),
+];
+
+final _appbarsList = [
+  const NavigationItem(
+    widget: AppbarWithDrawer(),
+    title: 'AppBar With Drawer',
+    leading: Icons.bar_chart,
   ),
 ];
