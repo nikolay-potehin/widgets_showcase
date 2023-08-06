@@ -31,57 +31,59 @@ class _AppbarWithDrawerState extends State<AppbarWithDrawer> {
       ),
       drawer: Drawer(
         child: SafeArea(
-          child: ListView(
-            children: [
-              DrawerHeader(
-                child: Padding(
-                  padding: const EdgeInsets.all(15),
-                  child: Column(
-                    children: const [
-                      Icon(
-                        Icons.person,
-                        size: 36,
-                      ),
-                      Text('Alexander'),
-                      Text('alexander.email@google.com'),
-                    ],
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                DrawerHeader(
+                  child: Padding(
+                    padding: const EdgeInsets.all(15),
+                    child: Column(
+                      children: const [
+                        Icon(
+                          Icons.person,
+                          size: 36,
+                        ),
+                        Text('Alexander'),
+                        Text('alexander.email@google.com'),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              ListTile(
-                leading: const Icon(Icons.person),
-                title: Text(
-                  'Account',
-                  style: Theme.of(context).textTheme.titleMedium,
+                ListTile(
+                  leading: const Icon(Icons.person),
+                  title: Text(
+                    'Account',
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
+                  onTap: () => _onDrawerOptionTapped(context, 'Account'),
                 ),
-                onTap: () => _onDrawerOptionTapped(context, 'Account'),
-              ),
-              ListTile(
-                leading: const Icon(Icons.email),
-                title: Text(
-                  'Messages',
-                  style: Theme.of(context).textTheme.titleMedium,
+                ListTile(
+                  leading: const Icon(Icons.email),
+                  title: Text(
+                    'Messages',
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
+                  onTap: () => _onDrawerOptionTapped(context, 'Messages'),
                 ),
-                onTap: () => _onDrawerOptionTapped(context, 'Messages'),
-              ),
-              const Divider(),
-              ListTile(
-                leading: const Icon(Icons.settings),
-                title: Text(
-                  'Settings',
-                  style: Theme.of(context).textTheme.titleMedium,
+                const Divider(),
+                ListTile(
+                  leading: const Icon(Icons.settings),
+                  title: Text(
+                    'Settings',
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
+                  onTap: () => _onDrawerOptionTapped(context, 'Settings'),
                 ),
-                onTap: () => _onDrawerOptionTapped(context, 'Settings'),
-              ),
-              ListTile(
-                leading: const Icon(Icons.close),
-                title: Text(
-                  'Close',
-                  style: Theme.of(context).textTheme.titleMedium,
+                ListTile(
+                  leading: const Icon(Icons.close),
+                  title: Text(
+                    'Close',
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
+                  onTap: () => Navigator.of(context).pop(),
                 ),
-                onTap: () => Navigator.of(context).pop(),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
