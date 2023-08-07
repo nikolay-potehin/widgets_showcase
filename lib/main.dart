@@ -3,6 +3,9 @@ import 'package:widgets_showcase/components/group_title.dart';
 import 'package:widgets_showcase/components/navigation_tile.dart';
 import 'package:widgets_showcase/pages/appbars/drawer_appbar.dart';
 import 'package:widgets_showcase/pages/appbars/search_appbar.dart';
+import 'package:widgets_showcase/pages/appbars/simple_appbar.dart';
+import 'package:widgets_showcase/pages/appbars/sliver_appbar.dart';
+import 'package:widgets_showcase/pages/appbars/transparent_appbar.dart';
 import 'package:widgets_showcase/pages/bottom_navbars/bottom_navbar.dart';
 import 'package:widgets_showcase/pages/bottom_navbars/google_bottom_bar.dart';
 import 'package:widgets_showcase/pages/bottom_navbars/simple_navbar.dart';
@@ -21,7 +24,8 @@ class App extends StatelessWidget {
       scaffoldMessengerKey: Utils.messengerKey,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        useMaterial3: true,
+        // useMaterial3: true,
+        colorSchemeSeed: Colors.deepPurple,
       ),
       home: const HomePage(),
     );
@@ -77,33 +81,48 @@ class NavigationItem {
   }
 }
 
-final _bottomBarsList = [
-  const NavigationItem(
-    widget: GoogleBottomBar(),
-    title: 'Google Bottom Bar',
-    leading: Icons.menu,
-  ),
-  const NavigationItem(
-    widget: BottomNavbar(),
-    title: 'Bottom Navigation Bar',
-    leading: Icons.menu,
-  ),
-  const NavigationItem(
+const _bottomBarsList = [
+  NavigationItem(
     widget: SimpleNavbar(),
     title: 'Simple Navigation Bar',
     leading: Icons.menu,
   ),
+  NavigationItem(
+    widget: BottomNavbar(),
+    title: 'Bottom Navigation Bar',
+    leading: Icons.menu,
+  ),
+  NavigationItem(
+    widget: GoogleBottomBar(),
+    title: 'Google Bottom Bar',
+    leading: Icons.menu,
+  ),
 ];
 
-final _appbarsList = [
-  const NavigationItem(
+const _appbarsList = [
+  NavigationItem(
+    widget: SimpleAppbar(),
+    title: 'Simple AppBar',
+    leading: Icons.bar_chart,
+  ),
+  NavigationItem(
     widget: DrawerAppbar(),
     title: 'Drawer AppBar',
     leading: Icons.bar_chart,
   ),
-  const NavigationItem(
+  NavigationItem(
     widget: SearchAppbar(),
     title: 'Search AppBar',
     leading: Icons.search,
+  ),
+  NavigationItem(
+    widget: SliverAppbar(),
+    title: 'Sliver AppBar',
+    leading: Icons.keyboard_double_arrow_down_sharp,
+  ),
+  NavigationItem(
+    widget: TransparentAppbar(),
+    title: 'Transparent AppBar',
+    leading: Icons.question_mark_sharp,
   ),
 ];

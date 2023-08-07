@@ -14,7 +14,7 @@ class _DrawerAppbarState extends State<DrawerAppbar> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Appbar With Drawer'),
+        title: const Text('Drawer AppBar'),
         centerTitle: true,
         actions: [
           IconButton(
