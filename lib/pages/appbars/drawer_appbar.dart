@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class AppbarWithDrawer extends StatefulWidget {
-  const AppbarWithDrawer({super.key});
+class DrawerAppbar extends StatefulWidget {
+  const DrawerAppbar({super.key});
 
   @override
-  State<AppbarWithDrawer> createState() => _AppbarWithDrawerState();
+  State<DrawerAppbar> createState() => _DrawerAppbarState();
 }
 
-class _AppbarWithDrawerState extends State<AppbarWithDrawer> {
+class _DrawerAppbarState extends State<DrawerAppbar> {
   var _pageName = 'Account';
 
   @override
