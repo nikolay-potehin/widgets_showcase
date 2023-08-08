@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:widgets_showcase/main.dart';
+import 'package:widgets_showcase/models/navigation_item.dart';
 
-class NavigationTile extends StatelessWidget {
-  const NavigationTile({
+class DemoTile extends StatelessWidget {
+  const DemoTile({
     super.key,
     required this.navigationItem,
   });
 
-  final NavigationItem navigationItem;
+  final DemoItem navigationItem;
 
   @override
   Widget build(BuildContext context) {

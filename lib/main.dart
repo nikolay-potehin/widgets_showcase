@@ -1,14 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:widgets_showcase/components/group_title.dart';
 import 'package:widgets_showcase/components/navigation_tile.dart';
-import 'package:widgets_showcase/pages/appbars/drawer_appbar.dart';
-import 'package:widgets_showcase/pages/appbars/search_appbar.dart';
-import 'package:widgets_showcase/pages/appbars/simple_appbar.dart';
-import 'package:widgets_showcase/pages/appbars/sliver_appbar.dart';
-import 'package:widgets_showcase/pages/appbars/transparent_appbar.dart';
-import 'package:widgets_showcase/pages/bottom_navbars/bottom_navbar.dart';
-import 'package:widgets_showcase/pages/bottom_navbars/google_bottom_bar.dart';
-import 'package:widgets_showcase/pages/bottom_navbars/simple_navbar.dart';
+import 'package:widgets_showcase/demo_sections.dart';
 import 'package:widgets_showcase/utils.dart';
 
 void main() {
@@ -33,96 +26,55 @@ class App extends StatelessWidget {
 }
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  const HomePage({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Widgets Showcase'),
-        centerTitle: true,
-      ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const GroupTitle(title: 'Bottom Navigation Bars'),
-            ..._bottomBarsList.map(
-              (e) => NavigationTile(navigationItem: e),
-            ),
-            const GroupTitle(title: 'AppBars'),
-            ..._appbarsList.map(
-              (e) => NavigationTile(navigationItem: e),
-            ),
-          ],
+    return WillPopScope(
+      onWillPop: () async {
+        return await showMyDialog(context) ?? false;
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Widgets Showcase'),
+          centerTitle: true,
+        ),
+        body: SingleChildScrollView(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const GroupTitle(title: 'Bottom Navigation Bars'),
+              ...bottomBarsList.map(
+                (e) => DemoTile(navigationItem: e),
+              ),
+              const GroupTitle(title: 'AppBars'),
+              ...appbarsList.map(
+                (e) => DemoTile(navigationItem: e),
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
+
+  Future<bool?> showMyDialog(BuildContext context) => showDialog<bool>(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: const Text('Do you want to close the app?'),
+          actions: [
+            TextButton(
+              child: const Text('No'),
+              onPressed: () => Navigator.of(context).pop(false),
+            ),
+            TextButton(
+              child: const Text('Yes'),
+              onPressed: () => Navigator.of(context).pop(true),
+            ),
+          ],
+        ),
+      );
 }
-
-class NavigationItem {
-  final Widget widget;
-  final String title;
-  final IconData leading;
-  final IconData trailing = Icons.arrow_forward;
-
-  const NavigationItem({
-    required this.widget,
-    required this.title,
-    required this.leading,
-  });
-
-  void openPage(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute(
-      builder: (_) => widget,
-    ));
-  }
-}
-
-const _bottomBarsList = [
-  NavigationItem(
-    widget: SimpleNavbar(),
-    title: 'Simple Navigation Bar',
-    leading: Icons.menu,
-  ),
-  NavigationItem(
-    widget: BottomNavbar(),
-    title: 'Bottom Navigation Bar',
-    leading: Icons.menu,
-  ),
-  NavigationItem(
-    widget: GoogleBottomBar(),
-    title: 'Google Bottom Bar',
-    leading: Icons.menu,
-  ),
-];
-
-const _appbarsList = [
-  NavigationItem(
-    widget: SimpleAppbar(),
-    title: 'Simple AppBar',
-    leading: Icons.bar_chart,
-  ),
-  NavigationItem(
-    widget: DrawerAppbar(),
-    title: 'Drawer AppBar',
-    leading: Icons.bar_chart,
-  ),
-  NavigationItem(
-    widget: SearchAppbar(),
-    title: 'Search AppBar',
-    leading: Icons.search,
-  ),
-  NavigationItem(
-    widget: SliverAppbar(),
-    title: 'Sliver AppBar',
-    leading: Icons.keyboard_double_arrow_down_sharp,
-  ),
-  NavigationItem(
-    widget: TransparentAppbar(),
-    title: 'Transparent AppBar',
-    leading: Icons.question_mark_sharp,
-  ),
-];
