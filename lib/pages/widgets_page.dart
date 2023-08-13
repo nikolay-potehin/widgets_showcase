@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:widgets_showcase/components/group_title.dart';
 import 'package:widgets_showcase/components/navigation_tile.dart';
-import 'package:widgets_showcase/widgets_demo_sections.dart';
+import 'package:widgets_showcase/models/widgets_demo_sections.dart';
 
 class WidgetsPage extends StatelessWidget {
   const WidgetsPage({

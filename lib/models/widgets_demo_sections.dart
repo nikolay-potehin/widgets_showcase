@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:widgets_showcase/demos/appbars.dart';
-import 'package:widgets_showcase/demos/bottom_navbars.dart';
-import 'package:widgets_showcase/demos/listviews.dart';
+import 'package:widgets_showcase/widgets/appbars.dart';
+import 'package:widgets_showcase/widgets/bottom_navbars.dart';
+import 'package:widgets_showcase/widgets/listviews.dart';
 import 'package:widgets_showcase/models/navigation_item.dart';
 
 const bottomBarDemos = [
