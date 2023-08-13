@@ -47,11 +47,15 @@ class HomePage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const GroupTitle(title: 'Bottom Navigation Bars'),
-              ...bottomBarsList.map(
+              ...bottomBarDemos.map(
                 (e) => DemoTile(navigationItem: e),
               ),
               const GroupTitle(title: 'AppBars'),
-              ...appbarsList.map(
+              ...appBarDemos.map(
+                (e) => DemoTile(navigationItem: e),
+              ),
+              const GroupTitle(title: 'ListViews'),
+              ...listViewDemos.map(
                 (e) => DemoTile(navigationItem: e),
               ),
             ],
