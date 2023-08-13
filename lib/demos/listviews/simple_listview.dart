@@ -15,7 +15,7 @@ class SimpleListView extends StatelessWidget {
           padding: const EdgeInsets.all(20),
           itemCount: 100,
           itemBuilder: (context, index) => Card(
-            color: Colors.deepPurple.shade100,
+            color: Colors.deepPurple.shade50,
             child: ListTile(
               title: Text('Item ${index + 1}'),
               leading: const Icon(Icons.turned_in_not_outlined),

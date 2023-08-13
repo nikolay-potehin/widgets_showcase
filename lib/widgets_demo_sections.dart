@@ -57,9 +57,24 @@ const listViewDemos = [
     leading: Icons.list_alt,
   ),
   DemoItem(
+    widget: NestedListView(),
+    title: 'Nested ListView',
+    leading: Icons.list_alt,
+  ),
+  DemoItem(
     widget: HorizontalListView(),
     title: 'Horizontal ListView',
     leading: Icons.list_alt,
+  ),
+  DemoItem(
+    widget: PullToRefreshListView(),
+    title: 'Pull To Refresh ListView',
+    leading: Icons.refresh,
+  ),
+  DemoItem(
+    widget: InfiniteScrollingListView(),
+    title: 'Infinite Scrolling ListView',
+    leading: Icons.refresh,
   ),
   DemoItem(
     widget: PageListView(),
