@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:widgets_showcase/examples/vk_messenger/account.dart';
+import 'package:widgets_showcase/examples/vk_messenger/calls.dart';
+import 'package:widgets_showcase/examples/vk_messenger/chats/chats.dart';
+import 'package:widgets_showcase/examples/vk_messenger/contacts.dart';
 
 class VKMessengerExample extends StatefulWidget {
   const VKMessengerExample({super.key});
@@ -13,12 +17,26 @@ class _VKMessengerExampleState extends State<VKMessengerExample> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      body: _pages[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         items: _bottomNavbarItems,
+        currentIndex: currentIndex,
+        onTap: (value) => setState(() => currentIndex = value),
+        showUnselectedLabels: true,
+        type: BottomNavigationBarType.fixed,
+        selectedFontSize: 12,
+        selectedItemColor: Colors.blue,
       ),
     );
   }
 }
+
+const _pages = [
+  VKContactsPage(),
+  VKCallsPage(),
+  VKChatsPage(),
+  VKAccountPage(),
+];
 
 const _bottomNavbarItems = [
   BottomNavigationBarItem(
@@ -34,9 +52,7 @@ const _bottomNavbarItems = [
     label: 'Чаты',
   ),
   BottomNavigationBarItem(
-    icon: CircleAvatar(
-      child: Icon(Icons.account_circle),
-    ),
+    icon: Icon(Icons.account_circle),
     label: 'Аккаунт',
   ),
 ];
