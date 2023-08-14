@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:widgets_showcase/examples/vk_messenger/account.dart';
+import 'package:widgets_showcase/examples/vk_messenger/account/account.dart';
 import 'package:widgets_showcase/examples/vk_messenger/calls.dart';
 import 'package:widgets_showcase/examples/vk_messenger/chats/chats.dart';
 import 'package:widgets_showcase/examples/vk_messenger/contacts.dart';
@@ -26,6 +26,8 @@ class _VKMessengerExampleState extends State<VKMessengerExample> {
         type: BottomNavigationBarType.fixed,
         selectedFontSize: 12,
         selectedItemColor: Colors.blue,
+        elevation: 0,
+        backgroundColor: Colors.grey.shade100,
       ),
     );
   }

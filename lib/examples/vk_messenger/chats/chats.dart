@@ -26,6 +26,14 @@ class VKChatsPage extends StatelessWidget {
           ),
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: Colors.white,
+        child: const Icon(
+          Icons.edit_outlined,
+          color: Colors.blue,
+        ),
+      ),
     );
   }
 
@@ -58,7 +66,6 @@ class VKChatsPage extends StatelessWidget {
   Container groupsFeed() {
     return Container(
       color: Colors.grey.shade200,
-      height: 150,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: List.generate(4, (index) => const GroupCard()),
