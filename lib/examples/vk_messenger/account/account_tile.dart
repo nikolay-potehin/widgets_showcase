@@ -1,27 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:widgets_showcase/examples/vk_messenger/models/account_tile_data.dart';
 
 class AccountTile extends StatelessWidget {
-  final String text;
-  final IconData iconData;
-  final Color iconColor;
+  final AccountTileData tileData;
 
   const AccountTile({
     super.key,
-    required this.text,
-    required this.iconData,
-    required this.iconColor,
+    required this.tileData,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(
-        vertical: 12,
+        vertical: 6,
         horizontal: 15,
       ),
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(15),
       ),
       child: Row(
         children: [
@@ -29,18 +25,18 @@ class AccountTile extends StatelessWidget {
             width: 36,
             height: 36,
             decoration: BoxDecoration(
-              color: iconColor.withAlpha(25),
+              color: tileData.iconColor.withAlpha(25),
               borderRadius: BorderRadius.circular(8),
             ),
             child: Icon(
-              iconData,
-              color: iconColor,
+              tileData.iconData,
+              color: tileData.iconColor,
               size: 26,
             ),
           ),
           const SizedBox(width: 12),
           Text(
-            text,
+            tileData.text,
             style: const TextStyle(
               fontSize: 16,
             ),

@@ -3,9 +3,19 @@ import 'package:widgets_showcase/examples/vk_messenger/chats/dialog_tile.dart';
 import 'package:widgets_showcase/examples/vk_messenger/chats/group_card.dart';
 import 'package:widgets_showcase/examples/vk_messenger/models/randomizer.dart';
 import 'package:widgets_showcase/examples/vk_messenger/models/users.dart';
+import 'package:widgets_showcase/examples/vk_messenger/opened_chat/opened_chat.dart';
 
 class VKChatsPage extends StatelessWidget {
   const VKChatsPage({super.key});
+
+  void openChat(BuildContext context, User user, String lastMessage) {
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (context) => OpenedChat(
+        user: user,
+        lastMessage: lastMessage,
+      ),
+    ));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,11 +62,13 @@ class VKChatsPage extends StatelessWidget {
             ),
           );
         } else {
-          final item = users[index - 1];
+          final user = users[index - 1];
+          final lastMessage = Randomizer.randomMessage();
 
           return DialogTile(
-            title: '${item.name} ${item.surname}',
-            subtitle: Randomizer.randomMessage(),
+            title: '${user.name} ${user.surname}',
+            subtitle: lastMessage,
+            onTap: () => openChat(context, user, lastMessage),
           );
         }
       },

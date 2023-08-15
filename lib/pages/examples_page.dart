@@ -15,7 +15,10 @@ class ExamplesPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: const [
             GroupTitle(title: 'VK Мессенджер'),
-            DemoTile(navigationItem: vkExample),
+            DemoTile(
+              navigationItem: vkExample,
+              iconColor: Colors.blue,
+            ),
           ],
         ),
       ),

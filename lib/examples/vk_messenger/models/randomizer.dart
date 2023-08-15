@@ -3,7 +3,7 @@ import 'dart:math';
 class Randomizer {
   static final random = Random();
 
-  static const timeSpans = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'];
+  static const weekDays = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'];
   static const messages = [
     'Привет!',
     'Привет, как дела?',
@@ -12,9 +12,11 @@ class Randomizer {
     'Здаров, сегодня все в силе?',
     'Ага, понятно все',
     'Фотография',
+    'Доброе утро!',
+    'Сегодня такое случилось! При встрече расскажу...'
   ];
 
-  static String randomTimeSpan() => timeSpans[random.nextInt(timeSpans.length)];
+  static String randomWeekDay() => weekDays[random.nextInt(weekDays.length)];
 
   static String randomMessage() => messages[random.nextInt(messages.length)];
 }

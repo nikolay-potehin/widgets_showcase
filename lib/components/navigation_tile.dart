@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:widgets_showcase/models/navigation_item.dart';
 
 class DemoTile extends StatelessWidget {
+  final Color? iconColor;
+
   const DemoTile({
     super.key,
     required this.navigationItem,
+    this.iconColor,
   });
 
   final DemoItem navigationItem;
@@ -20,7 +23,7 @@ class DemoTile extends StatelessWidget {
         ),
         leading: Icon(
           navigationItem.leading,
-          color: Theme.of(context).primaryColor,
+          color: iconColor ?? Theme.of(context).primaryColor,
         ),
         trailing: Icon(
           navigationItem.trailing,

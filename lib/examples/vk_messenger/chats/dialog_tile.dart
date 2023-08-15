@@ -7,11 +7,13 @@ class DialogTile extends StatelessWidget {
     required this.title,
     required this.subtitle,
     this.leading,
+    this.onTap,
   });
 
   final String title;
   final String subtitle;
   final Widget? leading;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +22,11 @@ class DialogTile extends StatelessWidget {
         title,
         style: const TextStyle(fontWeight: FontWeight.w500),
       ),
-      subtitle: Text(subtitle),
+      subtitle: Text(
+        subtitle,
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+      ),
       leading: leading ??
           CircleAvatar(
             backgroundColor: Colors.blueGrey.shade100,
@@ -29,9 +35,9 @@ class DialogTile extends StatelessWidget {
               color: Colors.blueGrey.shade300,
             ),
           ),
-      onTap: () {},
+      onTap: onTap ?? () {},
       trailing: Text(
-        Randomizer.randomTimeSpan(),
+        Randomizer.randomWeekDay(),
         style: const TextStyle(
           color: Colors.grey,
         ),

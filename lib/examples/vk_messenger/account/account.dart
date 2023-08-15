@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:widgets_showcase/examples/vk_messenger/account/account_info.dart';
 import 'package:widgets_showcase/examples/vk_messenger/account/account_photo.dart';
-import 'package:widgets_showcase/examples/vk_messenger/account/account_tile.dart';
+import 'package:widgets_showcase/examples/vk_messenger/account/account_tile_section.dart';
+import 'package:widgets_showcase/examples/vk_messenger/account/account_tiles_data.dart';
 
 class VKAccountPage extends StatelessWidget {
   const VKAccountPage({super.key});
@@ -16,23 +17,34 @@ class VKAccountPage extends StatelessWidget {
         children: [
           const AccountPhoto(),
           Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                children: const [
-                  AccountInfo(),
-                  SizedBox(height: 10),
-                  AccountTile(
-                    iconData: Icons.add,
-                    iconColor: Colors.orange,
-                    text: 'Добавить аккаунт',
-                  ),
-                  SizedBox(height: 12),
-                  AccountTile(
-                    text: 'Избранное',
-                    iconData: Icons.turned_in_not_rounded,
-                    iconColor: Colors.blue,
-                  ),
-                ],
+            child: NotificationListener<OverscrollIndicatorNotification>(
+              onNotification: (notification) {
+                notification.disallowIndicator();
+                return true;
+              },
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    const AccountInfo(),
+                    const SizedBox(height: 30),
+                    AccountTileSection(tilesData: [tilesData[0]]),
+                    const SizedBox(height: 12),
+                    AccountTileSection(
+                        tilesData: tilesData.getRange(1, 5).toList()),
+                    const SizedBox(height: 12),
+                    AccountTileSection(
+                        tilesData: tilesData.getRange(5, 11).toList()),
+                    const SizedBox(height: 12),
+                    AccountTileSection(tilesData: [tilesData[11]]),
+                    const SizedBox(height: 12),
+                    AccountTileSection(tilesData: [tilesData[12]]),
+                    const SizedBox(height: 12),
+                    AccountTileSection(
+                        tilesData:
+                            tilesData.getRange(13, tilesData.length).toList()),
+                    const SizedBox(height: 12),
+                  ],
+                ),
               ),
             ),
           ),
