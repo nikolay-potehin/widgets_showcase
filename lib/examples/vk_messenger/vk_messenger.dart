@@ -4,14 +4,14 @@ import 'package:widgets_showcase/examples/vk_messenger/calls/calls.dart';
 import 'package:widgets_showcase/examples/vk_messenger/chats/chats.dart';
 import 'package:widgets_showcase/examples/vk_messenger/contacts/contacts.dart';
 
-class VKMessengerExample extends StatefulWidget {
-  const VKMessengerExample({super.key});
+class VKMessenger extends StatefulWidget {
+  const VKMessenger({super.key});
 
   @override
-  State<VKMessengerExample> createState() => _VKMessengerExampleState();
+  State<VKMessenger> createState() => _VKMessengerState();
 }
 
-class _VKMessengerExampleState extends State<VKMessengerExample> {
+class _VKMessengerState extends State<VKMessenger> {
   var currentIndex = 2;
 
   @override

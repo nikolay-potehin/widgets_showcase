@@ -19,6 +19,11 @@ class ExamplesPage extends StatelessWidget {
               navigationItem: vkExample,
               iconColor: Colors.blue,
             ),
+            GroupTitle(title: 'Яндекс.Музыка'),
+            DemoTile(
+              navigationItem: yandexMusicExample,
+              iconColor: Colors.deepOrange,
+            ),
           ],
         ),
       ),
