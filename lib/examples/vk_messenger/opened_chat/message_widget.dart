@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:widgets_showcase/examples/vk_messenger/opened_chat/message.dart';
+import 'package:widgets_showcase/examples/vk_messenger/models/message.dart';
 
 class MessageWidget extends StatelessWidget {
   final Message message;
@@ -13,11 +13,10 @@ class MessageWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        if (message.type.name == "received") const Expanded(child: SizedBox()),
+        if (message.type.name == "sended") const Expanded(child: SizedBox()),
         ConstrainedBox(
           constraints: BoxConstraints(
             maxWidth: MediaQuery.of(context).size.width * 0.8,
-            minWidth: 100,
           ),
           child: Container(
             margin: const EdgeInsets.only(bottom: 10),
@@ -44,7 +43,7 @@ class MessageWidget extends StatelessWidget {
             ),
           ),
         ),
-        if (message.type.name == "sended") const Expanded(child: SizedBox()),
+        if (message.type.name == "received") const Expanded(child: SizedBox()),
       ],
     );
   }

@@ -19,4 +19,6 @@ class Randomizer {
   static String randomWeekDay() => weekDays[random.nextInt(weekDays.length)];
 
   static String randomMessage() => messages[random.nextInt(messages.length)];
+
+  static dynamic fromList(List list) => list[random.nextInt(list.length)];
 }

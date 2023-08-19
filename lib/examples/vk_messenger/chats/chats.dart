@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:widgets_showcase/examples/vk_messenger/chats/dialog_tile.dart';
 import 'package:widgets_showcase/examples/vk_messenger/chats/group_card.dart';
-import 'package:widgets_showcase/examples/vk_messenger/models/randomizer.dart';
 import 'package:widgets_showcase/examples/vk_messenger/models/users.dart';
 import 'package:widgets_showcase/examples/vk_messenger/opened_chat/opened_chat.dart';
+import 'package:widgets_showcase/examples/vk_messenger/vk_circle_avatar.dart';
 
 class VKChatsPage extends StatelessWidget {
   const VKChatsPage({super.key});
 
-  void openChat(BuildContext context, User user, String lastMessage) {
+  void openChat(BuildContext context, User user) {
     Navigator.of(context).push(MaterialPageRoute(
       builder: (context) => OpenedChat(
         user: user,
-        lastMessage: lastMessage,
       ),
     ));
   }
@@ -48,6 +47,8 @@ class VKChatsPage extends StatelessWidget {
   }
 
   ListView chatsFeed() {
+    final users = MockUsers.users;
+
     return ListView.builder(
       shrinkWrap: true,
       primary: false,
@@ -63,12 +64,12 @@ class VKChatsPage extends StatelessWidget {
           );
         } else {
           final user = users[index - 1];
-          final lastMessage = Randomizer.randomMessage();
 
           return DialogTile(
             title: '${user.name} ${user.surname}',
-            subtitle: lastMessage,
-            onTap: () => openChat(context, user, lastMessage),
+            subtitle: user.lastMessage,
+            onTap: () => openChat(context, user),
+            leading: VKCircleAvatar.fromUser(user),
           );
         }
       },

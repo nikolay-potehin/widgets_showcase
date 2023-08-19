@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:widgets_showcase/examples/vk_messenger/models/randomizer.dart';
+import 'package:widgets_showcase/examples/vk_messenger/vk_circle_avatar.dart';
 
 class DialogTile extends StatelessWidget {
   const DialogTile({
@@ -27,14 +28,7 @@ class DialogTile extends StatelessWidget {
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
       ),
-      leading: leading ??
-          CircleAvatar(
-            backgroundColor: Colors.blueGrey.shade100,
-            child: Icon(
-              Icons.camera_alt,
-              color: Colors.blueGrey.shade300,
-            ),
-          ),
+      leading: leading ?? VKCircleAvatar.noImage(),
       onTap: onTap ?? () {},
       trailing: Text(
         Randomizer.randomWeekDay(),

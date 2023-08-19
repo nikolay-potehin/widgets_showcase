@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:widgets_showcase/examples/vk_messenger/vk_circle_avatar.dart';
 
 class AccountPhoto extends StatelessWidget {
   const AccountPhoto({
@@ -10,15 +11,10 @@ class AccountPhoto extends StatelessWidget {
     return Container(
       height: 110,
       padding: const EdgeInsets.only(bottom: 10),
-      child: Center(
-        child: CircleAvatar(
-          backgroundColor: Colors.blueGrey.shade100,
+      child: const Center(
+        child: VKCircleAvatar(
+          foregroundImage: AssetImage('assets/avatars/me.jpg'),
           radius: 45,
-          child: Icon(
-            Icons.camera_alt,
-            color: Colors.blueGrey.shade300,
-            size: 54,
-          ),
         ),
       ),
     );
