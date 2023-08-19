@@ -19,6 +19,7 @@ class VKChatsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey.shade200,
       appBar: appBar(),
       body: NotificationListener<OverscrollIndicatorNotification>(
         onNotification: (notification) {
@@ -46,33 +47,39 @@ class VKChatsPage extends StatelessWidget {
     );
   }
 
-  ListView chatsFeed() {
+  Container chatsFeed() {
     final users = MockUsers.users;
 
-    return ListView.builder(
-      shrinkWrap: true,
-      primary: false,
-      itemCount: users.length + 1,
-      itemBuilder: (context, index) {
-        if (index == 0) {
-          return const DialogTile(
-            title: 'Избранное',
-            subtitle: 'Пересланное сообщение',
-            leading: CircleAvatar(
-              child: Icon(Icons.turned_in_not),
-            ),
-          );
-        } else {
-          final user = users[index - 1];
+    return Container(
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.vertical(top: Radius.circular(15)),
+      ),
+      child: ListView.builder(
+        shrinkWrap: true,
+        primary: false,
+        itemCount: users.length + 1,
+        itemBuilder: (context, index) {
+          if (index == 0) {
+            return const DialogTile(
+              title: 'Избранное',
+              subtitle: 'Пересланное сообщение',
+              leading: VKCircleAvatar(
+                child: Icon(Icons.turned_in_not),
+              ),
+            );
+          } else {
+            final user = users[index - 1];
 
-          return DialogTile(
-            title: '${user.name} ${user.surname}',
-            subtitle: user.lastMessage,
-            onTap: () => openChat(context, user),
-            leading: VKCircleAvatar.fromUser(user),
-          );
-        }
-      },
+            return DialogTile(
+              title: '${user.name} ${user.surname}',
+              subtitle: user.lastMessage,
+              onTap: () => openChat(context, user),
+              leading: VKCircleAvatar.fromUser(user),
+            );
+          }
+        },
+      ),
     );
   }
 
@@ -81,7 +88,12 @@ class VKChatsPage extends StatelessWidget {
       color: Colors.grey.shade200,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: List.generate(4, (index) => const GroupCard()),
+        children: [
+          GroupCard.urfu(),
+          GroupCard.games(),
+          GroupCard.music(),
+          GroupCard.meditation(),
+        ],
       ),
     );
   }

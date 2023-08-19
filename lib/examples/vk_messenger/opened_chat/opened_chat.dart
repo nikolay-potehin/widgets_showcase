@@ -112,7 +112,7 @@ class _OpenedChatState extends State<OpenedChat> {
       ],
       title: Row(
         children: [
-          VKCircleAvatar.fromUser(user),
+          VKCircleAvatar.fromUser(user, radius: 20),
           const SizedBox(width: 8),
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

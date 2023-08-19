@@ -11,27 +11,27 @@ class VKCircleAvatar extends StatelessWidget {
     super.key,
     this.child,
     this.backgroundColor,
-    this.radius,
+    this.radius = 24,
     this.foregroundImage,
   });
 
-  factory VKCircleAvatar.fromUser(User user) {
+  factory VKCircleAvatar.fromUser(User user, {double radius = 24}) {
     return user.avatarPath != null
         ? VKCircleAvatar(
             foregroundImage: AssetImage(
               user.avatarPath!,
             ),
+            radius: radius,
           )
         : VKCircleAvatar.noImage();
   }
 
-  factory VKCircleAvatar.noImage({double radius = 20}) => VKCircleAvatar(
+  factory VKCircleAvatar.noImage() => VKCircleAvatar(
         backgroundColor: Colors.blueGrey.shade100,
-        radius: radius,
         child: Icon(
           Icons.camera_alt,
           color: Colors.blueGrey.shade300,
-          size: radius * 1.2,
+          size: 28,
         ),
       );
 
@@ -43,13 +43,23 @@ class VKCircleAvatar extends StatelessWidget {
         ),
       );
 
+  factory VKCircleAvatar.group({
+    Widget? child,
+    Color? color,
+  }) =>
+      VKCircleAvatar(
+        radius: 32,
+        backgroundColor: color ?? Colors.blueGrey.shade100,
+        child: child,
+      );
+
   @override
   Widget build(BuildContext context) {
     return CircleAvatar(
       backgroundColor: backgroundColor,
       foregroundImage: foregroundImage,
       radius: radius,
-      child: child ?? const Icon(Icons.photo_camera),
+      child: child,
     );
   }
 }
