@@ -119,7 +119,7 @@ class _OpenedChatState extends State<OpenedChat> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                '${widget.user.name} ${widget.user.surname}',
+                user.nickname,
                 overflow: TextOverflow.ellipsis,
                 style: const TextStyle(
                   color: Colors.black,
@@ -127,9 +127,9 @@ class _OpenedChatState extends State<OpenedChat> {
                 ),
               ),
               const SizedBox(height: 2),
-              const Text(
-                'был(а) 15 минут назад',
-                style: TextStyle(
+              Text(
+                user.lastSeen,
+                style: const TextStyle(
                   color: Colors.grey,
                   fontSize: 12,
                 ),

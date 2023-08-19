@@ -17,22 +17,26 @@ class DialogTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(
-        title,
-        style: const TextStyle(fontWeight: FontWeight.w500),
-      ),
-      subtitle: Text(
-        subtitle,
-        maxLines: 1,
-        overflow: TextOverflow.ellipsis,
-      ),
-      leading: leading,
-      onTap: onTap ?? () {},
-      trailing: Text(
-        Randomizer.randomWeekDay(),
-        style: const TextStyle(
-          color: Colors.grey,
+    return Material(
+      child: InkWell(
+        child: ListTile(
+          title: Text(
+            title,
+            style: const TextStyle(fontWeight: FontWeight.w500),
+          ),
+          subtitle: Text(
+            subtitle,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
+          leading: leading,
+          onTap: onTap ?? () {},
+          trailing: Text(
+            Randomizer.randomWeekDay(),
+            style: const TextStyle(
+              color: Colors.grey,
+            ),
+          ),
         ),
       ),
     );

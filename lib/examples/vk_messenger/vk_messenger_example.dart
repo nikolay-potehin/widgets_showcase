@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:widgets_showcase/examples/vk_messenger/account/account.dart';
 import 'package:widgets_showcase/examples/vk_messenger/calls/calls.dart';
 import 'package:widgets_showcase/examples/vk_messenger/chats/chats.dart';
-import 'package:widgets_showcase/examples/vk_messenger/contacts.dart';
+import 'package:widgets_showcase/examples/vk_messenger/contacts/contacts.dart';
 
 class VKMessengerExample extends StatefulWidget {
   const VKMessengerExample({super.key});
@@ -54,7 +54,10 @@ const _bottomNavbarItems = [
     label: 'Чаты',
   ),
   BottomNavigationBarItem(
-    icon: Icon(Icons.account_circle),
+    icon: CircleAvatar(
+      radius: 11,
+      backgroundImage: AssetImage('assets/avatars/me.jpg'),
+    ),
     label: 'Аккаунт',
   ),
 ];

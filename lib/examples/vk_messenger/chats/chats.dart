@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:widgets_showcase/examples/vk_messenger/chats/dialog_tile.dart';
 import 'package:widgets_showcase/examples/vk_messenger/chats/group_card.dart';
+import 'package:widgets_showcase/examples/vk_messenger/chats/online_from_phone_widget.dart';
 import 'package:widgets_showcase/examples/vk_messenger/models/users.dart';
 import 'package:widgets_showcase/examples/vk_messenger/opened_chat/opened_chat.dart';
 import 'package:widgets_showcase/examples/vk_messenger/vk_circle_avatar.dart';
@@ -72,10 +73,15 @@ class VKChatsPage extends StatelessWidget {
             final user = users[index - 1];
 
             return DialogTile(
-              title: '${user.name} ${user.surname}',
+              title: user.nickname,
               subtitle: user.lastMessage,
               onTap: () => openChat(context, user),
-              leading: VKCircleAvatar.fromUser(user),
+              leading: Stack(
+                children: [
+                  VKCircleAvatar.fromUser(user),
+                  if (user.isOnline) const OnlineFromPhoneWidget(),
+                ],
+              ),
             );
           }
         },
