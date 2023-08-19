@@ -23,15 +23,16 @@ class VKCircleAvatar extends StatelessWidget {
             ),
             radius: radius,
           )
-        : VKCircleAvatar.noImage();
+        : VKCircleAvatar.noImage(radius: radius);
   }
 
-  factory VKCircleAvatar.noImage() => VKCircleAvatar(
+  factory VKCircleAvatar.noImage({double radius = 24}) => VKCircleAvatar(
         backgroundColor: Colors.blueGrey.shade100,
+        radius: radius,
         child: Icon(
           Icons.camera_alt,
           color: Colors.blueGrey.shade300,
-          size: 28,
+          size: radius * 1.2,
         ),
       );
 

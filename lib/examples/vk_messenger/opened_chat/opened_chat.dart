@@ -65,7 +65,7 @@ class _OpenedChatState extends State<OpenedChat> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(widget.user),
+      appBar: appBar(),
       body: Column(
         children: [
           Expanded(
@@ -94,7 +94,7 @@ class _OpenedChatState extends State<OpenedChat> {
     );
   }
 
-  AppBar appBar(User user) {
+  AppBar appBar() {
     return AppBar(
       backgroundColor: Colors.white,
       foregroundColor: Colors.blue,
@@ -112,14 +112,14 @@ class _OpenedChatState extends State<OpenedChat> {
       ],
       title: Row(
         children: [
-          VKCircleAvatar.fromUser(user, radius: 20),
+          VKCircleAvatar.fromUser(widget.user, radius: 20),
           const SizedBox(width: 8),
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                user.nickname,
+                widget.user.nickname,
                 overflow: TextOverflow.ellipsis,
                 style: const TextStyle(
                   color: Colors.black,
@@ -128,7 +128,7 @@ class _OpenedChatState extends State<OpenedChat> {
               ),
               const SizedBox(height: 2),
               Text(
-                user.lastSeen,
+                widget.user.lastSeen,
                 style: const TextStyle(
                   color: Colors.grey,
                   fontSize: 12,

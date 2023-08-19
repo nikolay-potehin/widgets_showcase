@@ -32,9 +32,9 @@ class MessageWidget extends StatelessWidget {
               runSpacing: 4,
               children: [
                 Text(message.text),
-                const Text(
-                  '10:47',
-                  style: TextStyle(
+                Text(
+                  message.sendTimeDisplay,
+                  style: const TextStyle(
                     fontSize: 10,
                     color: Colors.grey,
                   ),

@@ -33,7 +33,7 @@ class User {
     }
   }
 
-  bool get isOnline => lastSeenInMinutes <= 8;
+  bool get isOnline => lastSeenInMinutes <= 10;
 }
 
 class MockUsers {

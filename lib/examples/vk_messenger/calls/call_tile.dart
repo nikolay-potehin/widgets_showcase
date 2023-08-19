@@ -33,7 +33,7 @@ class CallTile extends StatelessWidget {
             size: 5,
           ),
           const SizedBox(width: 8),
-          Text(call.date),
+          Text(call.timeDisplay),
         ],
       ),
       trailing: IconButton(

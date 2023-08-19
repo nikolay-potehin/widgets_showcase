@@ -7,15 +7,21 @@ enum CallType { incoming, outgoing, missed, group }
 class Call {
   final User? user;
   final String name;
-  final String date;
+  final DateTime datetime;
   final CallType type;
 
-  const Call({
+  Call({
     required this.name,
-    required this.date,
     required this.type,
     this.user,
-  });
+  }) : datetime = DateTime.now().toLocal();
+
+  String get timeDisplay {
+    final hour = datetime.hour.toString().padLeft(2, '0');
+    final minute = datetime.minute.toString().padLeft(2, '0');
+
+    return '$hour:$minute';
+  }
 
   static String mapCallTypeToMessage(CallType callType) {
     switch (callType) {
@@ -46,12 +52,10 @@ List<Call> generateCalls(int length) {
     return type == CallType.group
         ? Call(
             name: 'Групповой звонок',
-            date: '10:47',
             type: type,
           )
         : Call(
             name: '${user.name} ${user.surname}',
-            date: '10:47',
             type: type,
             user: user,
           );
